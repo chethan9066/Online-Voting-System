@@ -21,6 +21,9 @@ export class UserComponent implements OnInit {
       this.voteCount++
     }else if(this.userVote==1){
       alert("Already Voted")
+    }else if(this.userVote==-1){
+      this.userVote=1
+      this.voteCount++
     }
   }
 
@@ -44,6 +47,19 @@ export class UserComponent implements OnInit {
 
   ngOnDestroy() {
     this.subscription.unsubscribe()
+  }
+
+  create_post(){
+    let div1=document.createElement("div")
+    div1.className="card text-center"
+    let div2=document.createElement("div")
+    div2.className="card-body"
+    let title=document.createElement("input")
+    title.setAttribute("type","text")
+    document.body.appendChild(div1)
+    div1.appendChild(div2)
+    div2.appendChild(title)
+
   }
 
 }
