@@ -1,10 +1,16 @@
+//navigation bar
+
+.nav-item{
+  font-size: medium;
+}
 .votebox {
     height: 120px;
     width: 120px;
     display: flex;
     text-align: center;
-    flex-direction: row;
+    flex-direction:row;
     font-size: 2em;
+    margin-left: 89%;
   
     .vote {
       cursor: pointer;
@@ -22,8 +28,15 @@
      }
     
     .vote-count{
+        margin-top: 40%;
+        margin-right: 30%;
+        margin-left: 20%;
         font-size:medium;
+        display: flex;
+        flex-direction: row;
+        
     }
+
   
   }
 
@@ -39,7 +52,7 @@
     }
     .job-box-filter select.input-sm {
         display: inline-block;
-        max-width: 120px;
+        max-width: 100px;
         margin: 0 5px;
         border: 1px solid #e8eef1;
         border-radius: 2px;
@@ -179,7 +192,9 @@
     a:hover{
         text-decoration:none;
     }
-
+.container{
+  width: 300%;
+}
 //Post
 
 .form-gradient .header {
@@ -227,4 +242,22 @@
 .form-dark .md-form textarea.md-textarea:focus:not([readonly])+label {
   color: #fff;
 }
-  
+
+.card{
+  margin-left: 50px;
+  margin-top: 10px;
+  width: 60%;
+}
+
+.fa-pencil{
+  margin-top: 15px;
+}
+
+i{
+  margin-top: 5px;
+}
+
+.container{
+  max-width: 93%;
+  margin-left: 30px;
+}

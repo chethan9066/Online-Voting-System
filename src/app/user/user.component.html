@@ -1,46 +1,70 @@
+<html lang="en" class="full-height">
 
-<button name="w_post" id="w_post" (click)="create_post()" class="btn btn-primary"> Add Post </button>
+<!--Main Navigation-->
+<header>
 
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark indigo">
+    <a class="navbar-brand" ><strong style="color: aliceblue;">Online Voting System</strong></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/user']">Home <span class="sr-only">(current)</span></a>
+        </li> &nbsp;
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Dashboard </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="view intro-2">
+    <div class="full-bg-img">
+      <div class="mask rgba-black-light flex-center">
+        <div class="container text-center white-text">
+          <div class="white-text text-center wow fadeInUp">
+            <h2>This Navbar is fixed</h2>
+            <h5>It will always stay visible on the top, even when you scroll down</h5>
+            <br>
+            <p>Full page intro with background image will be always displayed in full screen mode, regardless
+              of device </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+
+
+<div class="main">
 <!-- Section: form gradient -->
-<section class="form-gradient mb-5">
 
   <!--Form with header-->
   <div class="card">
-
-    <!--Header-->
-    <div class="header peach-gradient">
-
-      <div class="row d-flex justify-content-center">
-        <h3 class="white-text mb-0 py-5 font-weight-bold">Contact Us</h3>
-      </div>
-
-    </div>
-    <!--Header-->
-
     <div class="card-body mx-4">
 
       <div class="md-form">
-        <i class="fas fa-user prefix grey-text"></i>
-        <input type="text" id="form104" class="form-control">
-        <label for="form104">Your name</label>
+        <i class="fa fa-user prefix grey-text"></i>
+        <input type="text" id="form104" class="form-control" placeholder="Enter Your Name">
       </div>
 
       <div class="md-form">
-        <i class="fas fa-envelope prefix grey-text"></i>
-        <input type="text" id="form105" class="form-control">
-        <label for="form105">Your email</label>
+        <i class="fa fa-pencil-square-o prefix grey-text"></i>
+        <input type="text" id="form105" class="form-control" placeholder="Title Name">
       </div>
 
       <div class="md-form">
-        <i class="fas fa-tag prefix grey-text"></i>
-        <input type="text" id="form106" class="form-control">
-        <label for="form106">Subject</label>
+        <i class="fa fa-th-large prefix grey-text"></i>
+        <input type="text" id="form106" class="form-control" placeholder="Category Name">
       </div>
 
       <div class="md-form">
-        <i class="fas fa-pencil-alt prefix grey-text"></i>
-        <textarea id="form107" class="md-textarea form-control" rows="5"></textarea>
-        <label for="form107">Your message</label>
+        <i class="fa fa-pencil prefix grey-text"></i>
+        <textarea id="form107" class="md-textarea form-control" rows="5" placeholder="Write Something..."></textarea>
       </div>
 
 
@@ -50,7 +74,7 @@
         <!--Grid column-->
         <div class="col-md-12">
           <div class="text-center">
-            <button type="button" class="btn btn-grey btn-rounded z-depth-1a">Send</button>
+            <button type="button" class="btn btn-success"><i class="fa fa-send"></i> Post</button>
           </div>
         </div>
         <!--Grid column-->
@@ -62,10 +86,10 @@
   </div>
   <!--/Form with header-->
 
-</section>
+<br>
 
 <!-- Post Cards-->
-    <div class="container">
+  <div class="container">
       <div class="row">
       <div class="col-md-8">
         <div class="chat_container">
@@ -104,13 +128,15 @@
                       <div class="votebox">
                         <span class="fa fa-arrow-up vote up"
                               (click)="upvote()"
-                              [ngClass]="{'active' : post.upvote }">
+                              [ngClass]="{'active' : post.upvote }">   
+                              <span class="vote-count">{{post.totalUpVotes}}</span>
                         </span>
-                        <span class="vote-count"> Total UpVotes  {{post.totalUpVotes}}</span>
+                        
                       
                         <span class="fa fa-arrow-down vote down"
                               (click)="downvote()"
                               [ngClass]="{'active' : post.downvote }">
+                              <span class="vote-count">{{post.totalDownVotes}}</span>
                       
                         </span>
                       </div>
@@ -123,4 +149,6 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
+
+</div>

@@ -1,29 +1,13 @@
 export class UserData {
-    postString: string; 
-        username: string; 
-        upvote: boolean;
-        downvote: boolean; 
-        userImage: string;
-        totalUpVotes: number;
-        totalDownVotes: number;
-        Updatedon:number;
 
     constructor( 
-        postString: string, 
-        username: string, 
-        upvote: boolean, 
-        downvote: boolean, 
-        userImage: string, 
-        totalUpVotes: number, 
-        totalDownVotes: number,
-        Updatedon:number){
-            this.postString=postString
-            this.username = username;
-            this.userImage = userImage;
-            this.upvote = upvote;
-            this.downvote = downvote;
-            this.totalUpVotes = totalUpVotes;
-            this.totalDownVotes = totalDownVotes;
-            this.Updatedon = Updatedon;
+        private postString: string, 
+        private username: string, 
+        private upvote: boolean, 
+        private downvote: boolean, 
+        private userImage: string, 
+        private totalUpVotes: number, 
+        private totalDownVotes: number,
+        private Updatedon:number){
         }
 }
