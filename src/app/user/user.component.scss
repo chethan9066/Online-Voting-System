@@ -12,10 +12,17 @@
     font-size: 2em;
     margin-left: 89%;
   
-    .vote {
+    .fa-arrow-down{
       cursor: pointer;
       &:hover {
-        color: orange;
+        color: red;
+      }
+    }
+
+    .fa-arrow-up{
+      cursor: pointer;
+      &:hover {
+        color: green;
       }
     }
   
@@ -260,4 +267,12 @@ i{
 .container{
   max-width: 93%;
   margin-left: 30px;
+}
+
+.time{
+  margin-left: 80%;
+}
+
+#delete{
+  margin-left: 95%;
 }

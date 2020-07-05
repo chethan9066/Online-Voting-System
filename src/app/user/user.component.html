@@ -49,22 +49,21 @@
 
       <div class="md-form">
         <i class="fa fa-user prefix grey-text"></i>
-        <input type="text" id="form104" class="form-control" placeholder="Enter Your Name">
+        <input type="text" id="name" class="form-control" placeholder="Enter Your Name" [(ngModel)]="name">
       </div>
-
       <div class="md-form">
         <i class="fa fa-pencil-square-o prefix grey-text"></i>
-        <input type="text" id="form105" class="form-control" placeholder="Title Name">
+        <input type="text" id="title" class="form-control" placeholder="Title Name" [(ngModel)]="title">
       </div>
 
       <div class="md-form">
         <i class="fa fa-th-large prefix grey-text"></i>
-        <input type="text" id="form106" class="form-control" placeholder="Category Name">
+        <input type="text" id="category" class="form-control" placeholder="Category Name" [(ngModel)]="category">
       </div>
 
       <div class="md-form">
         <i class="fa fa-pencil prefix grey-text"></i>
-        <textarea id="form107" class="md-textarea form-control" rows="5" placeholder="Write Something..."></textarea>
+        <textarea id="form107" class="md-textarea form-control" id="text" rows="5" placeholder="Write Something..." [(ngModel)]="postString"></textarea>
       </div>
 
 
@@ -74,7 +73,7 @@
         <!--Grid column-->
         <div class="col-md-12">
           <div class="text-center">
-            <button type="button" class="btn btn-success"><i class="fa fa-send"></i> Post</button>
+            <button type="button" class="btn btn-success" (click)="add_post()" ><i class="fa fa-send"></i> Post</button>
           </div>
         </div>
         <!--Grid column-->
@@ -114,41 +113,44 @@
               </div>
             </div>
             <div class="inbox-message">
-              <ul *ngFor ="let post of posts">
+              <ul *ngFor ="let posts of posts">
                 <li>
                     <div class="message-avatar">
-                      <img [src]= "post.userImage" alt="no found">
+                      <img [src]= "posts.userImage" alt="no found">
+                      <h5>{{posts.username}} </h5>
                     </div>
                     <div class="message-body">
                       <div class="message-body-heading">
-                        <h5>{{post.username}} </h5>
-                        <span>{{post.Updatedon}} hours ago</span>
+                        <p><b>{{posts.title}}   category by : {{posts.category}}</b></p>
+                  
+                       <p class="time"> {{posts.UpdatedOn|date:'medium'}} </p>
                       </div>
-                      <p>{{post.postString}}</p>
+                      <p>{{posts.postString}}</p>
                       <div class="votebox">
                         <span class="fa fa-arrow-up vote up"
                               (click)="upvote()"
-                              [ngClass]="{'active' : post.upvote }">   
-                              <span class="vote-count">{{post.totalUpVotes}}</span>
+                              [ngClass]="{'active' : posts.upvote }">   
+                              <span class="vote-count">{{posts.totalUpVotes}}</span>
                         </span>
                         
                       
                         <span class="fa fa-arrow-down vote down"
                               (click)="downvote()"
-                              [ngClass]="{'active' : post.downvote }">
-                              <span class="vote-count">{{post.totalDownVotes}}</span>
+                              [ngClass]="{'active' : posts.downvote }">
+                              <span class="vote-count">{{posts.totalDownVotes}}</span>
                       
                         </span>
                       </div>
                     
                     </div>
+                    <button class="btn btn-danger btn-sm rounded-0" type="button" id="delete" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
                 </li>
               </ul>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+        </div>       
+      </div>      
+    </div>   
 </div>
 
 </div>

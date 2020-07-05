@@ -8,19 +8,36 @@ import {UserData} from './usrdata.model';
 })
 export class UserComponent implements OnInit {
   
-
-  ngOnInit(): void {
-
-    this.posts.push( new UserData( 'This is post string', 'user1', true, false, 'https://bootdey.com/img/Content/avatar/avatar7.png', 12, 2,7 ));
-    this.changeDetectorRef.detectChanges();
-
-  }
   voteCount: number = 0;
   userVote: number = 0;
   posts: UserData[] = [];
 
-  subscription;
+  name:string;
+  title:string;
+  category:string;
+  postString:string;
+  today= Date.now();
 
+
+  ngOnInit(): void {
+
+    
+  }
+enable=false
+  add_post(){
+    this.posts.push( new UserData( this.postString,this.name,this.title,this.category ,'https://bootdey.com/img/Content/avatar/avatar7.png', 12, 2,Date.now()));
+    this.changeDetectorRef.detectChanges();
+    if(this.name!="" &&
+    this.title!="" &&
+    this.category!="" &&
+    this.postString!=""){
+      this.enable=true
+
+    }else {this.enable=false
+      }
+    
+
+  }
   constructor(private changeDetectorRef: ChangeDetectorRef) { }
 
   upvote() {
@@ -51,22 +68,5 @@ export class UserComponent implements OnInit {
     }
   }
   
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe()
-  }
-
-  create_post(){
-    let div1=document.createElement("div")
-    div1.className="card text-center"
-    let div2=document.createElement("div")
-    div2.className="card-body"
-    let title=document.createElement("input")
-    title.setAttribute("type","text")
-    document.body.appendChild(div1)
-    div1.appendChild(div2)
-    div2.appendChild(title)
-
-  }
 
 }
