@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import {UserData} from './usrdata.model';
 
 @Component({
   selector: 'app-user',
@@ -7,12 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
   
+
+  ngOnInit(): void {
+
+    this.posts.push( new UserData( 'This is post string', 'user1', true, false, 'https://bootdey.com/img/Content/avatar/avatar7.png', 12, 2,7 ));
+    this.changeDetectorRef.detectChanges();
+
+  }
   voteCount: number = 0;
   userVote: number = 0;
+  posts: UserData[] = [];
 
   subscription;
 
-  constructor() { }
+  constructor(private changeDetectorRef: ChangeDetectorRef) { }
 
   upvote() {
     if(this.userVote==0)
@@ -41,9 +50,7 @@ export class UserComponent implements OnInit {
 
     }
   }
-  ngOnInit(): void {
-    
-  }
+  
 
   ngOnDestroy() {
     this.subscription.unsubscribe()

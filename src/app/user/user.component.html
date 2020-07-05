@@ -1,34 +1,70 @@
 
 <button name="w_post" id="w_post" (click)="create_post()" class="btn btn-primary"> Add Post </button>
 
-<div class="votebox">
-    <span class="fa fa-arrow-up vote up"
-          (click)="upvote()"
-          [ngClass]="{'active' : userVote > 0 }">
-    </span>
-    <span class="vote-count">{{voteCount}}</span>
-  
-    <span class="fa fa-arrow-down vote down"
-          (click)="downvote()"
-          [ngClass]="{'active' : userVote < 0 }">
-  
-    </span>
-  </div>
+<!-- Section: form gradient -->
+<section class="form-gradient mb-5">
 
-    <div class="card text-center">
-      <div class="card-header">
-        Featured
+  <!--Form with header-->
+  <div class="card">
+
+    <!--Header-->
+    <div class="header peach-gradient">
+
+      <div class="row d-flex justify-content-center">
+        <h3 class="white-text mb-0 py-5 font-weight-bold">Contact Us</h3>
       </div>
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+
+    </div>
+    <!--Header-->
+
+    <div class="card-body mx-4">
+
+      <div class="md-form">
+        <i class="fas fa-user prefix grey-text"></i>
+        <input type="text" id="form104" class="form-control">
+        <label for="form104">Your name</label>
       </div>
-      <div class="card-footer text-muted">
-        Posted on 1:35 AM
+
+      <div class="md-form">
+        <i class="fas fa-envelope prefix grey-text"></i>
+        <input type="text" id="form105" class="form-control">
+        <label for="form105">Your email</label>
       </div>
+
+      <div class="md-form">
+        <i class="fas fa-tag prefix grey-text"></i>
+        <input type="text" id="form106" class="form-control">
+        <label for="form106">Subject</label>
+      </div>
+
+      <div class="md-form">
+        <i class="fas fa-pencil-alt prefix grey-text"></i>
+        <textarea id="form107" class="md-textarea form-control" rows="5"></textarea>
+        <label for="form107">Your message</label>
+      </div>
+
+
+      <!--Grid row-->
+      <div class="row d-flex align-items-center mb-3 mt-4">
+
+        <!--Grid column-->
+        <div class="col-md-12">
+          <div class="text-center">
+            <button type="button" class="btn btn-grey btn-rounded z-depth-1a">Send</button>
+          </div>
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
     </div>
 
+  </div>
+  <!--/Form with header-->
+
+</section>
+
+<!-- Post Cards-->
     <div class="container">
       <div class="row">
       <div class="col-md-8">
@@ -44,7 +80,7 @@
                 <option value="50">50</option>
                 <option value="100">100</option>
                 </select>
-                entries</label>
+                Entries</label>
                 </div>
                 <div class="col-md-6 col-sm-6">
                   <div class="filter-search-box text-right">
@@ -54,121 +90,37 @@
               </div>
             </div>
             <div class="inbox-message">
-              <ul>
+              <ul *ngFor ="let post of posts">
                 <li>
                     <div class="message-avatar">
-                      <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                      <img [src]= "post.userImage" alt="no found">
                     </div>
                     <div class="message-body">
                       <div class="message-body-heading">
-                        <h5>Daniel Dock </h5>
-                        <span>7 hours ago</span>
+                        <h5>{{post.username}} </h5>
+                        <span>{{post.Updatedon}} hours ago</span>
                       </div>
-                      <p>Hello, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor....</p>
+                      <p>{{post.postString}}</p>
                       <div class="votebox">
                         <span class="fa fa-arrow-up vote up"
                               (click)="upvote()"
-                              [ngClass]="{'active' : userVote > 0 }">
+                              [ngClass]="{'active' : post.upvote }">
                         </span>
-                        <span class="vote-count">{{voteCount}}</span>
+                        <span class="vote-count"> Total UpVotes  {{post.totalUpVotes}}</span>
                       
                         <span class="fa fa-arrow-down vote down"
                               (click)="downvote()"
-                              [ngClass]="{'active' : userVote < 0 }">
+                              [ngClass]="{'active' : post.downvote }">
                       
                         </span>
                       </div>
                     
                     </div>
                 </li>
-                <li>
-                  <a href="#">
-                    <div class="message-avatar">
-                      <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
-                    </div>
-                    <div class="message-body">
-                      <div class="message-body-heading">
-                        <h5>Daniel Dock <span class="unread">Unread</span></h5>
-                        <span>7 hours ago</span>
-                      </div>
-                      <p>Hello, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor....</p>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="message-avatar">
-                      <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">
-                    </div>
-                    <div class="message-body">
-                      <div class="message-body-heading">
-                        <h5>Daniel Dock <span class="pending">Pending Work</span></h5>
-                        <span>7 hours ago</span>
-                      </div>
-                      <p>Hello, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor....</p>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="message-avatar">
-                      <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="">
-                    </div>
-                    <div class="message-body">
-                      <div class="message-body-heading">
-                        <h5>Daniel Dock <span class="unread">Unread</span></h5>
-                        <span>7 hours ago</span>
-                      </div>
-                      <p>Hello, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor....</p>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="message-avatar">
-                      <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="">
-                    </div>
-                    <div class="message-body">
-                      <div class="message-body-heading">
-                        <h5>Daniel Dock <span class="business">Business</span></h5>
-                        <span>7 hours ago</span>
-                      </div>
-                      <p>Hello, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor....</p>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="message-avatar">
-                      <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
-                    </div>
-                    <div class="message-body">
-                      <div class="message-body-heading">
-                        <h5>Daniel Dock <span class="important">Important</span></h5>
-                        <span>7 hours ago</span>
-                      </div>
-                      <p>Hello, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor....</p>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="message-avatar">
-                      <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">
-                    </div>
-                    <div class="message-body">
-                      <div class="message-body-heading">
-                        <h5>Daniel Dock <span class="unread">Unread</span></h5>
-                        <span>7 hours ago</span>
-                      </div>
-                      <p>Hello, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor....</p>
-                    </div>
-                  </a>
-                </li>
               </ul>
             </div>
           </div>
         </div>
       </div>
-      </div>
-      </div>
+    </div>
+  </div>
