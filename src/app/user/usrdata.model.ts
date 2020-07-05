@@ -1,5 +1,6 @@
-export class UserData {
+import { UserComponent } from './user.component';
 
+export class UserData {
     constructor( 
         private postString: string, 
         private username: string,

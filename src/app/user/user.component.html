@@ -113,37 +113,37 @@
               </div>
             </div>
             <div class="inbox-message">
-              <ul *ngFor ="let posts of posts">
+              <ul *ngFor ="let post of posts;let i = index">
                 <li>
                     <div class="message-avatar">
-                      <img [src]= "posts.userImage" alt="no found">
-                      <h5>{{posts.username}} </h5>
+                      <img [src]= "post.userImage" alt="no found">
+                      <h5>{{post.username}} </h5>
                     </div>
                     <div class="message-body">
                       <div class="message-body-heading">
-                        <p><b>{{posts.title}}   category by : {{posts.category}}</b></p>
+                        <p><b>{{post.title}}   category by : {{post.category}}</b></p>
                   
-                       <p class="time"> {{posts.UpdatedOn|date:'medium'}} </p>
+                       <p class="time"> {{post.UpdatedOn|date:'medium'}} </p>
                       </div>
-                      <p>{{posts.postString}}</p>
+                      <p>{{post.postString}}</p>
                       <div class="votebox">
                         <span class="fa fa-arrow-up vote up"
                               (click)="upvote()"
-                              [ngClass]="{'active' : posts.upvote }">   
-                              <span class="vote-count">{{posts.totalUpVotes}}</span>
+                              [ngClass]="{'active' : post.upvote }" title="Up Vote">   
+                              <span class="vote-count">{{post.totalUpVotes}}</span>
                         </span>
                         
                       
                         <span class="fa fa-arrow-down vote down"
                               (click)="downvote()"
-                              [ngClass]="{'active' : posts.downvote }">
-                              <span class="vote-count">{{posts.totalDownVotes}}</span>
+                              [ngClass]="{'active' : post.downvote }" title="Down Vote">
+                              <span class="vote-count">{{post.totalDownVotes}}</span>
                       
                         </span>
                       </div>
                     
                     </div>
-                    <button class="btn btn-danger btn-sm rounded-0" type="button" id="delete" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                    <button class="btn btn-danger btn-sm rounded-0" type="button" id="delete" data-toggle="tooltip" data-placement="top" title="Delete" (click)="delete_post(i)"><i class="fa fa-trash"></i></button>
                 </li>
               </ul>
             </div>

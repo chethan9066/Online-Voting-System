@@ -1,4 +1,11 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, 
+  ChangeDetectorRef ,
+  ComponentRef,
+  ComponentFactoryResolver,
+  ViewContainerRef,
+  ViewChild,
+  ViewRef } from '@angular/core';
+
 import {UserData} from './usrdata.model';
 
 @Component({
@@ -7,6 +14,12 @@ import {UserData} from './usrdata.model';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
+
+  @ViewChild("viewContainerRef", { read: ViewContainerRef })
+  VCR: ViewContainerRef;
+
+  child_unique_key: number = 0;
+  componentsReferences = Array<ComponentRef<UserData>>()
   
   voteCount: number = 0;
   userVote: number = 0;
@@ -23,22 +36,18 @@ export class UserComponent implements OnInit {
 
     
   }
-enable=false
+
   add_post(){
     this.posts.push( new UserData( this.postString,this.name,this.title,this.category ,'https://bootdey.com/img/Content/avatar/avatar7.png', 12, 2,Date.now()));
     this.changeDetectorRef.detectChanges();
-    if(this.name!="" &&
-    this.title!="" &&
-    this.category!="" &&
-    this.postString!=""){
-      this.enable=true
-
-    }else {this.enable=false
-      }
+    this.name=""
+    this.title=""
+    this.category=""
+    this.postString=""
     
-
   }
-  constructor(private changeDetectorRef: ChangeDetectorRef) { }
+  constructor(private changeDetectorRef: ChangeDetectorRef ,
+      private CFR: ComponentFactoryResolver) { }
 
   upvote() {
     if(this.userVote==0)
@@ -67,6 +76,11 @@ enable=false
 
     }
   }
-  
+
+delete_post(i:number){
+
+    this.posts.splice(i,1)
+}
 
 }
+  
