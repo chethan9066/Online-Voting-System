@@ -1,12 +1,9 @@
 import { Component, OnInit, 
-  ChangeDetectorRef ,
-  ComponentRef,
-  ComponentFactoryResolver,
-  ViewContainerRef,
-  ViewChild,
-  ViewRef } from '@angular/core';
+  ChangeDetectorRef  } from '@angular/core';
 
 import {UserData} from './usrdata.model';
+import { Observable } from 'rxjs';
+import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-user',
@@ -15,15 +12,12 @@ import {UserData} from './usrdata.model';
 })
 export class UserComponent implements OnInit {
 
-  @ViewChild("viewContainerRef", { read: ViewContainerRef })
-  VCR: ViewContainerRef;
-
-  child_unique_key: number = 0;
-  componentsReferences = Array<ComponentRef<UserData>>()
+  constructor(private changeDetectorRef: ChangeDetectorRef, private dataService: DataService) { }
   
   voteCount: number = 0;
   userVote: number = 0;
   posts: UserData[] = [];
+  posts$: Observable<UserData[]>;
 
   name:string;
   title:string;
@@ -37,18 +31,20 @@ export class UserComponent implements OnInit {
     
   }
 
-  add_post(){
-    this.posts.push( new UserData( this.postString,this.name,this.title,this.category ,'https://bootdey.com/img/Content/avatar/avatar7.png', 12, 2,Date.now()));
-    this.changeDetectorRef.detectChanges();
+  addPost(){
+    this.posts$ = this.dataService.addPost( new UserData( this.postString,this.name,this.title,this.category ,'https://bootdey.com/img/Content/avatar/avatar7.png', 12, 2,Date.now()));
     this.name=""
     this.title=""
     this.category=""
     this.postString=""
     
   }
-  constructor(private changeDetectorRef: ChangeDetectorRef ,
-      private CFR: ComponentFactoryResolver) { }
 
+  deletePost(i:number){
+
+    this.posts$=this.dataService.deletePost(i)
+}
+  
   upvote() {
     if(this.userVote==0)
     {
@@ -77,10 +73,9 @@ export class UserComponent implements OnInit {
     }
   }
 
-delete_post(i:number){
 
-    this.posts.splice(i,1)
-}
+
+
 
 }
   

@@ -1,8 +1,9 @@
 <html lang="en" class="full-height">
 
 <!--Main Navigation-->
-<header>
+<header> </header>
 
+<body>
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark indigo">
     <a class="navbar-brand" ><strong style="color: aliceblue;">Online Voting System</strong></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -15,33 +16,16 @@
           <a class="nav-link" [routerLink]="['/user']">Home <span class="sr-only">(current)</span></a>
         </li> &nbsp;
         <li class="nav-item active">
-          <a class="nav-link" href="#">Dashboard </a>
+          <a class="nav-link" href="#">Logout </a>
         </li>
       </ul>
     </div>
   </nav>
 
-  <div class="view intro-2">
-    <div class="full-bg-img">
-      <div class="mask rgba-black-light flex-center">
-        <div class="container text-center white-text">
-          <div class="white-text text-center wow fadeInUp">
-            <h2>This Navbar is fixed</h2>
-            <h5>It will always stay visible on the top, even when you scroll down</h5>
-            <br>
-            <p>Full page intro with background image will be always displayed in full screen mode, regardless
-              of device </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</header>
 
 
-<div class="main">
-<!-- Section: form gradient -->
+  <div class="main">
+  <!-- Section: form gradient -->
 
   <!--Form with header-->
   <div class="card">
@@ -73,7 +57,7 @@
         <!--Grid column-->
         <div class="col-md-12">
           <div class="text-center">
-            <button type="button" class="btn btn-success" (click)="add_post()" ><i class="fa fa-send"></i> Post</button>
+            <button type="button" class="btn btn-success" (click)="addPost()" ><i class="fa fa-send"></i> Post</button>
           </div>
         </div>
         <!--Grid column-->
@@ -113,7 +97,7 @@
               </div>
             </div>
             <div class="inbox-message">
-              <ul *ngFor ="let post of posts;let i = index">
+              <ul *ngFor ="let post of posts$|async;let i = index">
                 <li>
                     <div class="message-avatar">
                       <img [src]= "post.userImage" alt="no found">
@@ -143,7 +127,7 @@
                       </div>
                     
                     </div>
-                    <button class="btn btn-danger btn-sm rounded-0" type="button" id="delete" data-toggle="tooltip" data-placement="top" title="Delete" (click)="delete_post(i)"><i class="fa fa-trash"></i></button>
+                    <button class="btn btn-danger btn-sm rounded-0" type="button" id="delete" data-toggle="tooltip" data-placement="top" title="Delete" (click)="deletePost(i)"><i class="fa fa-trash"></i></button>
                 </li>
               </ul>
             </div>
@@ -154,3 +138,5 @@
 </div>
 
 </div>
+</body>
+</html>
