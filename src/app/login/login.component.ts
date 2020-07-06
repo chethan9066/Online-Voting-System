@@ -14,23 +14,26 @@ export class LoginComponent implements OnInit {
   constructor(private router:Router,private authService:AuthService) { }
   username: string;
   password: string;
-  showSpinner: boolean;
   userAuth$:Observable<boolean>;
+  loading = false;
   ngOnInit(): void {
   }
 
   login() : void {
     
       if(this.authService.login(this.username,this.password)){
-        this.router.navigate(["online-voting-system"]);
-        this.showSpinner=true;
-      }else {
-        this.showSpinner=true
+        this.loading=true
         setTimeout(() => {
-          this.showSpinner=false
+          this.router.navigate(["online-voting-system"]);
+        }, 2000);
+      }else {
+        this.loading=true
+        setTimeout(() => {
+          this.loading=false
         }, 3000);
-
-
+        let p=document.createElement("p")
+        p.nodeValue="User Name or Password Incorrect";
+        
     }
   }
 
