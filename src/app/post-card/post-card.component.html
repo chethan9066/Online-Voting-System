@@ -18,17 +18,17 @@
               </div>
               <div class="col-md-6 col-sm-6">
                 <div class="filter-search-box text-right">
-                  <label>Search:<input type="search" class="form-control input-sm" placeholder=""></label>
+                  <label>Search <i class="fa fa-search" aria-hidden="true"></i><input type="search" class="form-control input-sm" placeholder="Start Seacrching" [(ngModel)]="searchPost" autocomplete="off"></label>
                 </div>
               </div>
             </div>
           </div>
           <div class="inbox-message">
-            <ul *ngFor ="let post of posts$|async;let i = index">
+            <ul *ngFor ="let post of posts$|async | filter:searchPost  ;let i = index">
               <li>
                   <div class="message-avatar">
                     <img [src]= "post.userImage" alt="no found">
-                    <h5>{{post.username}} </h5>
+                    <h5 style="text-align: center;"><b>{{post.username}}</b> </h5>
                   </div>
                   <div class="message-body">
                     <div class="message-body-heading">

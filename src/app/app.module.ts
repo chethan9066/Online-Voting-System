@@ -4,6 +4,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 import { CustomMaterialModule } from './material.module';
@@ -31,7 +32,8 @@ import { PostFormComponent } from './post-form/post-form.component';
     CustomMaterialModule,
     FormsModule,
     FontAwesomeModule,
-    MDBBootstrapModule
+    MDBBootstrapModule,
+    Ng2SearchPipeModule
 
   ],
   providers: [],

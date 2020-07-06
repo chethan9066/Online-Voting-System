@@ -1,4 +1,6 @@
-<div>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<div class="login-div">
 <mat-card class="example-card">
     <mat-card-header>
       <mat-card-title>Login</mat-card-title>
@@ -23,6 +25,7 @@
         </tr></table>
       </form>
     </mat-card-content>
+ 
     <mat-card-actions>
       <button mat-raised-button (click)="login()" color="primary" class="login" [class.spinner]="loading" [disabled]="loading" >Login </button>
     </mat-card-actions><br>

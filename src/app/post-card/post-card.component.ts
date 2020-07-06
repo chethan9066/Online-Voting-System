@@ -14,7 +14,7 @@ import { AuthService } from '../auth.service'
 })
 export class PostCardComponent implements OnInit {
   constructor(private changeDetectorRef: ChangeDetectorRef, private dataService: DataService,private getusername:AuthService) { }
-  
+  searchPost;
   username:string=this.getusername.getLoggedInUser();
   totalUpvotes$:Observable<PostData[]>;
   totalDownVotes$: Observable<PostData[]>;
@@ -39,7 +39,6 @@ export class PostCardComponent implements OnInit {
   }
 
   deletePost(i:number){
-
     this.posts$=this.dataService.deletePost(i)
 }
   

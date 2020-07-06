@@ -1,18 +1,14 @@
+
 .example-card {
-    margin-left: 20%;
-    margin-top: 10px;
-    width: 60%;
-    padding: 50px;
-    text-align: center;
-    align-items: center;
+    width:40% ;
+    padding-left: 50px;
 }
 
-mat-card-title{
-   margin-left: 450px;
-}
-
-.example-form{
-    margin-left: 390px;
+.login-div{
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .login:hover{

@@ -31,6 +31,7 @@ export class PostFormComponent implements OnInit {
     this.posts$=this.dataService.getPosts();
   }
 
+  
   addPost(){
     this.posts$ = this.dataService.addPost( new PostData( this.postString,this.name,this.title,this.category ,'https://bootdey.com/img/Content/avatar/avatar7.png',Date.now(),this.isUpVote,this.isDownVote))
     this.name=""
