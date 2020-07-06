@@ -1,0 +1,39 @@
+<!--Form with header-->
+<div class="card" *ngIf="username=='admin'">
+    <div class="card-body mx-4">
+
+      <div class="md-form">
+        <i class="fa fa-user prefix grey-text"></i>
+        <input type="text" id="name" class="form-control" placeholder="Enter Your Name" [(ngModel)]="name">
+      </div>
+      <div class="md-form">
+        <i class="fa fa-pencil-square-o prefix grey-text"></i>
+        <input type="text" id="title" class="form-control" placeholder="Title Name" [(ngModel)]="title">
+      </div>
+
+      <div class="md-form">
+        <i class="fa fa-th-large prefix grey-text"></i>
+        <input type="text" id="category" class="form-control" placeholder="Category Name" [(ngModel)]="category">
+      </div>
+
+      <div class="md-form">
+        <i class="fa fa-pencil prefix grey-text"></i>
+        <textarea id="form107" class="md-textarea form-control" id="text" rows="5" placeholder="Write Something..." [(ngModel)]="postString"></textarea>
+      </div>
+
+
+      <!--Grid row-->
+      <div class="row d-flex align-items-center mb-3 mt-4">
+
+        <!--Grid column-->
+        <div class="col-md-12">
+          <div class="text-center">
+            <button type="button" class="btn btn-success" (click)="addPost()" ><i class="fa fa-send"></i> Post</button>
+          </div>
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+    </div>
+  </div>

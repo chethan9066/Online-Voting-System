@@ -1,0 +1,70 @@
+<!-- Post Cards-->
+<div class="container">
+    <div class="row">
+    <div class="col-md-8">
+      <div class="chat_container">
+        <div class="job-box">
+          <div class="job-box-filter">
+            <div class="row">
+              <div class="col-md-6 col-sm-6">
+              <label>Show 
+              <select name="datatable_length" class="form-control input-sm">
+              <option value="10">10</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+              </select>
+              Entries</label>
+              </div>
+              <div class="col-md-6 col-sm-6">
+                <div class="filter-search-box text-right">
+                  <label>Search:<input type="search" class="form-control input-sm" placeholder=""></label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="inbox-message">
+            <ul *ngFor ="let post of posts$|async;let i = index">
+              <li>
+                  <div class="message-avatar">
+                    <img [src]= "post.userImage" alt="no found">
+                    <h5>{{post.username}} </h5>
+                  </div>
+                  <div class="message-body">
+                    <div class="message-body-heading">
+                      <p><b>{{post.title}}   category by : {{post.category}}</b></p>
+                
+                     <p class="time"> {{post.UpdatedOn|date:'medium'}} </p>
+                    </div>
+                    <p>{{post.postString}}</p>
+                    <div *ngIf="username=='admin'">
+                      <p style="color: chartreuse;"><b> Total UpVotes: {{post.upVotesUsers.size}}</b></p>
+                      <p style="color: red;"><b> Total DownVotes: {{post.downVotesUsers.size}}</b></p>
+                    </div>
+                    <div class="votebox" *ngIf="username!='admin'">
+                      <span class="fa fa-arrow-up vote up"
+                            (click)="upVote(i)"
+                            [ngClass]="{'active' :post.isUpVote}" title="Up Vote">   
+                            <span class="vote-count" *ngIf="post.upVotesUsers.size>0">{{post.upVotesUsers.size}}</span>
+                      </span>
+                      
+                    
+                      <span class="fa fa-arrow-down vote down"
+                            (click)="downVote(i)"
+                            [ngClass]="{'active' : post.isDownVote }" title="Down Vote">
+                            <span class="vote-count" *ngIf="post.downVotesUsers.size>0">-{{post.downVotesUsers.size}}</span>
+                    
+                      </span>
+                    </div>
+                  
+                  </div>
+                  <button class="btn btn-danger btn-sm rounded-0" type="button" id="delete" data-toggle="tooltip" data-placement="top" title="Delete" (click)="deletePost(i)" *ngIf="username=='admin'"><i class="fa fa-trash"></i></button>
+              </li>
+              <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+            </ul>
+          </div>
+        </div>
+      </div>       
+    </div>      
+  </div>   
+ </div>

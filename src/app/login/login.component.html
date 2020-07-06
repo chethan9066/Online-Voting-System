@@ -8,13 +8,16 @@
         <table class="example-full-width" cellspacing="0">
           <tr>
             <td>
+              <i class="fa fa-user fa-lg" aria-hidden="true"></i>&nbsp;
               <mat-form-field class="example-full-width">
               <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
               </mat-form-field>
             </td>
           </tr>
           <tr>
-          <td><mat-form-field class="example-full-width">
+          <td>
+            <i class="fa fa-key fa-lg" aria-hidden="true"></i>&nbsp;
+            <mat-form-field class="example-full-width">
             <input matInput placeholder="Password" [(ngModel)]="password"type="password" name="password" required>
           </mat-form-field></td>
         </tr></table>
@@ -23,6 +26,6 @@
     </mat-card-content>
     <mat-card-actions>
       <button mat-raised-button (click)="login()" color="primary">Login</button>
-    </mat-card-actions>
+    </mat-card-actions><br>
   </mat-card>
 </div>

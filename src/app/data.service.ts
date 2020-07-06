@@ -77,20 +77,9 @@ downVote(i:number):Observable<PostData[]>{
 
 }
 
-getPosts():Observable<PostData[]>{
+  getPosts():Observable<PostData[]>{
   return this.createObservable(this.posts);
-}
-
-}
-
-/*userComponenetObs(i:number): Observable<String>  {
-    return Observable.create(
-      (observer) => {
-        setTimeout(() => {
-          observer.next(this.posts[i].upVotesUsers.size);
-        }, 5000);
-      }
-    )
   }
 
-}*/
+}
+

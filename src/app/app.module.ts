@@ -11,6 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
+import { PostCardComponent } from './post-card/post-card.component';
+import { PostFormComponent } from './post-form/post-form.component';
 
 
 
@@ -18,7 +20,9 @@ import { LoginComponent } from './login/login.component';
   declarations: [
     AppComponent,
     AdminComponent,
-    LoginComponent
+    LoginComponent,
+    PostCardComponent,
+    PostFormComponent
   ],
   imports: [
     BrowserModule,
