@@ -7,10 +7,10 @@ import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss']
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.scss']
 })
-export class UserComponent implements OnInit {
+export class AdminComponent implements OnInit {
 
   constructor(private changeDetectorRef: ChangeDetectorRef, private dataService: DataService) { }
   

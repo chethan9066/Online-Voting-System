@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   login() : void {
     
       if(this.authService.login(this.username,this.password)){
-        this.router.navigate(["user"]);
+        this.router.navigate(["admin"]);
         this.showSpinner=true;
       }else {
         this.showSpinner=true

@@ -9,14 +9,14 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { CustomMaterialModule } from './material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserComponent } from './user/user.component';
+import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
-import { PostData } from './user/post.model';
+import { PostData } from './admin/post.model';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent,
+    AdminComponent,
     LoginComponent
   ],
   imports: [

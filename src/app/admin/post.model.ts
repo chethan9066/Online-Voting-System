@@ -1,4 +1,4 @@
-import { UserComponent } from './user.component';
+import { AdminComponent } from './admin.component';
 
 export class PostData {
 
