@@ -112,16 +112,16 @@
                       <p>{{post.postString}}</p>
                       <div class="votebox">
                         <span class="fa fa-arrow-up vote up"
-                              (click)="upvote()"
-                              [ngClass]="{'active' : post.upvote }" title="Up Vote">   
-                              <span class="vote-count">{{post.totalUpVotes}}</span>
+                              (click)="upVote(i)"
+                              [ngClass]="{'active' :post.isUpVote}" title="Up Vote">   
+                              <span class="vote-count">{{post.upVotesUsers.size}}</span>
                         </span>
                         
                       
                         <span class="fa fa-arrow-down vote down"
-                              (click)="downvote()"
-                              [ngClass]="{'active' : post.downvote }" title="Down Vote">
-                              <span class="vote-count">{{post.totalDownVotes}}</span>
+                              (click)="downVote(i)"
+                              [ngClass]="{'active' : post.isDownVote }" title="Down Vote">
+                              <span class="vote-count">-{{post.downVotesUsers.size}}</span>
                       
                         </span>
                       </div>

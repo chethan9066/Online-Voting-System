@@ -1,7 +1,7 @@
 import { Component, OnInit, 
   ChangeDetectorRef  } from '@angular/core';
 
-import {UserData} from './usrdata.model';
+import {PostData} from './post.model';
 import { Observable } from 'rxjs';
 import {DataService} from '../data.service';
 
@@ -14,16 +14,21 @@ export class UserComponent implements OnInit {
 
   constructor(private changeDetectorRef: ChangeDetectorRef, private dataService: DataService) { }
   
-  voteCount: number = 0;
-  userVote: number = 0;
-  posts: UserData[] = [];
-  posts$: Observable<UserData[]>;
+  totalUpvotes$:Observable<PostData[]>;
+  totalDownVotes$: Observable<PostData[]>;
+  upvoteActive:boolean=false;
+  downvoteActive:boolean=false;
+
+  posts: PostData[] = [];
+  posts$: Observable<PostData[]>;
 
   name:string;
   title:string;
   category:string;
   postString:string;
   today= Date.now();
+  isUpVote:boolean;
+  isDownVote:boolean;
 
 
   ngOnInit(): void {
@@ -31,8 +36,9 @@ export class UserComponent implements OnInit {
     
   }
 
+
   addPost(){
-    this.posts$ = this.dataService.addPost( new UserData( this.postString,this.name,this.title,this.category ,'https://bootdey.com/img/Content/avatar/avatar7.png', 12, 2,Date.now()));
+    this.posts$ = this.dataService.addPost( new PostData( this.postString,this.name,this.title,this.category ,'https://bootdey.com/img/Content/avatar/avatar7.png',Date.now(),this.isUpVote,this.isDownVote))
     this.name=""
     this.title=""
     this.category=""
@@ -45,30 +51,24 @@ export class UserComponent implements OnInit {
     this.posts$=this.dataService.deletePost(i)
 }
   
-  upvote() {
-    if(this.userVote==0)
+  upVote(i:number) {
+    if(!this.dataService.checkIsUserVoted)
     {
-      this.userVote=1
-      this.voteCount++
-    }else if(this.userVote==1){
-      alert("Already Voted")
-    }else if(this.userVote==-1){
-      this.userVote=1
-      this.voteCount++
+      this.dataService.upVote(i)
+    }else {
+      this.dataService.upVote(i)
+
     }
+
   }
 
-  downvote() {
-    if(this.userVote==0){
-      this.userVote=-1
-      this.voteCount--;
-    }
-    else if(this.userVote==-1){
-      alert("Already De-Voted")
-    }
-    else if(this.userVote==1){
-      this.userVote=-1
-      this.voteCount--;
+  downVote(i:number) {
+    
+    if(!this.dataService.checkIsUserVoted)
+    {
+      this.dataService.downVote(i)
+    }else {
+      this.dataService.downVote(i)
 
     }
   }
