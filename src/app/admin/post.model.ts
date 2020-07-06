@@ -1,5 +1,3 @@
-import { AdminComponent } from './admin.component';
-
 export class PostData {
 
     public upVotesUsers:Set<string>;

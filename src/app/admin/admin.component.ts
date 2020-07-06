@@ -4,6 +4,7 @@ import { Component, OnInit,
 import {PostData} from './post.model';
 import { Observable } from 'rxjs';
 import {DataService} from '../data.service';
+import { AuthService } from '../auth.service'
 
 @Component({
   selector: 'app-user',
@@ -12,8 +13,9 @@ import {DataService} from '../data.service';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private changeDetectorRef: ChangeDetectorRef, private dataService: DataService) { }
+  constructor(private changeDetectorRef: ChangeDetectorRef, private dataService: DataService,private getusername:AuthService) { }
   
+  username:string=this.getusername.getLoggedInUser();
   totalUpvotes$:Observable<PostData[]>;
   totalDownVotes$: Observable<PostData[]>;
   upvoteActive:boolean=false;
@@ -32,8 +34,8 @@ export class AdminComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.posts$=this.dataService.getPosts();
 
-    
   }
 
 

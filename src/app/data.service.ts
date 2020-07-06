@@ -77,6 +77,10 @@ downVote(i:number):Observable<PostData[]>{
 
 }
 
+getPosts():Observable<PostData[]>{
+  return this.createObservable(this.posts);
+}
+
 }
 
 /*userComponenetObs(i:number): Observable<String>  {

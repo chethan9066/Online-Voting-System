@@ -28,7 +28,7 @@
   <!-- Section: form gradient -->
 
   <!--Form with header-->
-  <div class="card" *ngIf="username=='admin'">
+  <div class="card">
     <div class="card-body mx-4">
 
       <div class="md-form">
@@ -110,7 +110,7 @@
                        <p class="time"> {{post.UpdatedOn|date:'medium'}} </p>
                       </div>
                       <p>{{post.postString}}</p>
-                      <div class="votebox" *ngIf="username!='admin'">
+                      <div class="votebox">
                         <span class="fa fa-arrow-up vote up"
                               (click)="upVote(i)"
                               [ngClass]="{'active' :post.isUpVote}" title="Up Vote">   
@@ -127,7 +127,7 @@
                       </div>
                     
                     </div>
-                    <button class="btn btn-danger btn-sm rounded-0" type="button" id="delete" data-toggle="tooltip" data-placement="top" title="Delete" (click)="deletePost(i)" *ngIf="username=='admin'"><i class="fa fa-trash"></i></button>
+                    <button class="btn btn-danger btn-sm rounded-0" type="button" id="delete" data-toggle="tooltip" data-placement="top" title="Delete" (click)="deletePost(i)"><i class="fa fa-trash"></i></button>
                 </li>
                 <hr style="height:2px;border-width:0;color:gray;background-color:gray">
               </ul>
