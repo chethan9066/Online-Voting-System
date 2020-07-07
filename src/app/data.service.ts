@@ -23,7 +23,7 @@ addPost(post: PostData):Observable<PostData[]>{
   }
 
   createObservable(posts: PostData[]): Observable<PostData[]>  {
-    return timer(5000).pipe(mapTo(posts)); 
+    return timer(2000).pipe(mapTo(posts)); 
   }
 
 deletePost(i:number):Observable<PostData[]>{
@@ -93,7 +93,7 @@ downVote(i:number):Observable<PostData[]>{
     sort(posts: Observable<PostData[]> ): Observable<PostData[]> {
       return posts.pipe( tap ( posts => {
           posts.sort( 
-            (x, y) => { return x[this.sortBy] > y[this.sortBy] ? -1: 1}
+            (x, y) => { return x[this.sortBy] > y[this.sortBy] ? 1: -1}
           )
        })
       );

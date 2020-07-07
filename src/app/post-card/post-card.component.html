@@ -23,7 +23,7 @@
             </div>
           </div>
           <div class="inbox-message">
-            <ul *ngFor ="let post of posts$|async | orderBy: sortSet |filter:searchPost |paginate: { itemsPerPage: 5, currentPage: page } ;let i = index">
+            <ul *ngFor ="let post of posts$|async |filter:searchPost |paginate: { itemsPerPage: 5, currentPage: page } ;let i = index">
               <li>
                   <div class="message-avatar">
                     <img [src]= "post.userImage" alt="no found">
