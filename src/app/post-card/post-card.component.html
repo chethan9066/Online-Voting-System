@@ -7,14 +7,7 @@
           <div class="job-box-filter">
             <div class="row">
               <div class="col-md-6 col-sm-6">
-              <label>Show 
-              <select name="datatable_length" class="form-control input-sm">
-              <option value="05">05</option>
-              <option value="10">10</option>
-              <option value="20">20</option>
-              <option value="25">25</option>
-              </select>
-              Posts</label>
+                <pagination-controls (pageChange)="page = $event"></pagination-controls>
               </div>
               <div class="col-md-6 col-sm-6">
                 <div class="filter-search-box text-right">
@@ -24,7 +17,7 @@
             </div>
           </div>
           <div class="inbox-message">
-            <ul *ngFor ="let post of posts$|async | filter:searchPost  ;let i = index">
+            <ul *ngFor ="let post of posts$|async | filter:searchPost |paginate: { itemsPerPage: 5, currentPage: page } ;let i = index">
               <li>
                   <div class="message-avatar">
                     <img [src]= "post.userImage" alt="no found">
@@ -63,6 +56,7 @@
               <hr style="height:2px;border-width:0;color:gray;background-color:gray">
             </ul>
           </div>
+          <pagination-controls (pageChange)="page = $event"></pagination-controls>
         </div>
       </div>       
     </div>      

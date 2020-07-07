@@ -5,6 +5,8 @@ import {FormsModule} from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { JwPaginationModule } from 'jw-angular-pagination';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 
 
 
@@ -34,7 +36,9 @@ import { PostFormComponent } from './post-form/post-form.component';
     FormsModule,
     FontAwesomeModule,
     MDBBootstrapModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    JwPaginationModule,
+    NgxPaginationModule
 
   ],
   providers: [],

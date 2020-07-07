@@ -2,7 +2,7 @@ import { Component, OnInit,
   ChangeDetectorRef  } from '@angular/core';
 
 import {PostData} from '../admin/post.model';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import {DataService} from '../data.service';
 import { AuthService } from '../auth.service'
 
@@ -14,7 +14,9 @@ import { AuthService } from '../auth.service'
 })
 export class PostCardComponent implements OnInit {
   constructor(private changeDetectorRef: ChangeDetectorRef, private dataService: DataService,private getusername:AuthService) { }
+ 
   searchPost;
+  page:number=1;
   username:string=this.getusername.getLoggedInUser();
   totalUpvotes$:Observable<PostData[]>;
   totalDownVotes$: Observable<PostData[]>;
