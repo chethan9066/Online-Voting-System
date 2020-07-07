@@ -7,7 +7,6 @@
           <div class="job-box-filter">
             <div class="row">
               <div class="col-md-6 col-sm-6">
-                <pagination-controls (pageChange)="page = $event"></pagination-controls>
               </div>
               <div class="col-md-6 col-sm-6">
                 <div class="filter-search-box text-right">
@@ -51,12 +50,12 @@
                     </div>
                   
                   </div>
-                  <button class="btn btn-danger btn-sm rounded-0" type="button" id="delete" data-toggle="tooltip" data-placement="top" title="Delete" (click)="deletePost(i)" *ngIf="username=='admin'"><i class="fa fa-trash"></i></button>
+                  <button class="btn btn-danger btn-sm rounded-0" type="button" id="delete" data-toggle="tooltip" data-placement="top" title="Delete" (click)="deletePost(i)" *ngIf="username=='admin'" [class.spinner]="loading[i]" [disabled]="loading[i]"><i class="fa fa-trash"></i></button>
               </li>
               <hr style="height:2px;border-width:0;color:gray;background-color:gray">
             </ul>
           </div>
-          <pagination-controls (pageChange)="page = $event"></pagination-controls>
+          <pagination-controls (pageChange)="page = $event" responsive="true"></pagination-controls>
         </div>
       </div>       
     </div>      

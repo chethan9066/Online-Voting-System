@@ -33,6 +33,7 @@ export class PostCardComponent implements OnInit {
   today= Date.now();
   isUpVote:boolean;
   isDownVote:boolean;
+  loading=[];
 
 
   ngOnInit(): void {
@@ -41,7 +42,10 @@ export class PostCardComponent implements OnInit {
   }
 
   deletePost(i:number){
-
+    this.loading[i]=true;
+    setTimeout(() => {
+      this.loading[i]=false;
+    }, 5000);
     this.posts$=this.dataService.deletePost(i)
 }
   
