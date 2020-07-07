@@ -5,6 +5,9 @@ import {PostData} from '../admin/post.model';
 import { Observable, from } from 'rxjs';
 import {DataService} from '../data.service';
 import { AuthService } from '../auth.service'
+import { tap } from 'rxjs/operators';
+import { OrderPipe } from 'ngx-order-pipe';
+
 
 
 @Component({
@@ -13,7 +16,10 @@ import { AuthService } from '../auth.service'
   styleUrls: ['./post-card.component.scss']
 })
 export class PostCardComponent implements OnInit {
-  constructor(private changeDetectorRef: ChangeDetectorRef, private dataService: DataService,private getusername:AuthService) { }
+  constructor(private changeDetectorRef: ChangeDetectorRef,
+     private dataService: DataService,
+     private getusername:AuthService,
+     private orderPipe: OrderPipe) { }
  
   searchPost;
   page:number=1;
@@ -34,6 +40,7 @@ export class PostCardComponent implements OnInit {
   isUpVote:boolean;
   isDownVote:boolean;
   loading=[];
+  sortSet = 'username';
 
 
   ngOnInit(): void {
@@ -71,5 +78,11 @@ export class PostCardComponent implements OnInit {
     }
   }
 
+  setSort(value:string) {
+    this.sortSet = value;
+    console.log("Sorting by :" + value);
+    this.posts$ = this.dataService.setSort(value);
+  }
+  
+  }
 
-}

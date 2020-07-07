@@ -7,6 +7,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { JwPaginationModule } from 'jw-angular-pagination';
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import { OrderModule } from 'ngx-order-pipe';
 
 
 
@@ -38,7 +39,8 @@ import { PostFormComponent } from './post-form/post-form.component';
     MDBBootstrapModule,
     Ng2SearchPipeModule,
     JwPaginationModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    OrderModule
 
   ],
   providers: [],

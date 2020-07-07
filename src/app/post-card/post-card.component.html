@@ -7,6 +7,13 @@
           <div class="job-box-filter">
             <div class="row">
               <div class="col-md-6 col-sm-6">
+                <select class="form-control" (change)="setSort($event.target.value)" name="sort post" id="cars">
+                  <option value="Sort By"[disabled]=true >Sort By</option>
+                  <option value="username">Name</option>
+                  <option value="title">Title</option>
+                  <option value="category">Category</option>
+                  <option value="UpdatedOn">Date</option>
+                </select>
               </div>
               <div class="col-md-6 col-sm-6">
                 <div class="filter-search-box text-right">
@@ -16,7 +23,7 @@
             </div>
           </div>
           <div class="inbox-message">
-            <ul *ngFor ="let post of posts$|async | filter:searchPost |paginate: { itemsPerPage: 5, currentPage: page } ;let i = index">
+            <ul *ngFor ="let post of posts$|async | orderBy: sortSet |filter:searchPost |paginate: { itemsPerPage: 5, currentPage: page } ;let i = index">
               <li>
                   <div class="message-avatar">
                     <img [src]= "post.userImage" alt="no found">
