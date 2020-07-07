@@ -9,12 +9,12 @@
               <div class="col-md-6 col-sm-6">
               <label>Show 
               <select name="datatable_length" class="form-control input-sm">
+              <option value="05">05</option>
               <option value="10">10</option>
+              <option value="20">20</option>
               <option value="25">25</option>
-              <option value="50">50</option>
-              <option value="100">100</option>
               </select>
-              Entries</label>
+              Posts</label>
               </div>
               <div class="col-md-6 col-sm-6">
                 <div class="filter-search-box text-right">
@@ -38,8 +38,8 @@
                     </div>
                     <p>{{post.postString}}</p>
                     <div *ngIf="username=='admin'">
-                      <p style="color: chartreuse;"><b> Total UpVotes: {{post.upVotesUsers.size}}</b></p>
-                      <p style="color: red;"><b> Total DownVotes: {{post.downVotesUsers.size}}</b></p>
+                      <p style="color: chartreuse;"> Total UpVotes: {{post.upVotesUsers.size}}</p>
+                      <p style="color: red;"> Total DownVotes: {{post.downVotesUsers.size}}</p>
                     </div>
                     <div class="votebox" *ngIf="username!='admin'">
                       <span class="fa fa-arrow-up vote up"

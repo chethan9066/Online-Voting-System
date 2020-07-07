@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, timer } from 'rxjs/';
+import{mapTo} from 'rxjs/operators'
 import { PostData } from './admin/post.model';
 import{ AuthService } from './auth.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -19,13 +21,7 @@ addPost(post: PostData):Observable<PostData[]>{
   }
 
   createObservable(posts: PostData[]): Observable<PostData[]>  {
-    return Observable.create(
-      (observer) => {
-        setTimeout(() => {
-          observer.next(posts);
-        }, 5000);
-      }
-    )
+    return timer(5000).pipe(mapTo(posts)); 
   }
 
 deletePost(i:number):Observable<PostData[]>{

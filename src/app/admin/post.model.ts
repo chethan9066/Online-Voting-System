@@ -11,7 +11,7 @@ export class PostData {
         private title : string,
         private category: string, 
         private userImage: string,
-        private UpdatedOn: number,
+        private UpdatedOn: string,
         public isUpVote: boolean,
         public isDownVote: boolean
         ){

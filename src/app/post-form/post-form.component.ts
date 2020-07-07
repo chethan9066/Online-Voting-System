@@ -22,7 +22,6 @@ export class PostFormComponent implements OnInit {
   title:string;
   category:string;
   postString:string;
-  today= Date.now();
   isUpVote:boolean;
   isDownVote:boolean;
   posts: PostData[] = [];
@@ -33,7 +32,7 @@ export class PostFormComponent implements OnInit {
 
   
   addPost(){
-    this.posts$ = this.dataService.addPost( new PostData( this.postString,this.name,this.title,this.category ,'https://bootdey.com/img/Content/avatar/avatar7.png',Date.now(),this.isUpVote,this.isDownVote))
+    this.posts$ = this.dataService.addPost( new PostData( this.postString,this.name,this.title,this.category ,'https://bootdey.com/img/Content/avatar/avatar7.png',Date().toString(),this.isUpVote,this.isDownVote))
     this.name=""
     this.title=""
     this.category=""

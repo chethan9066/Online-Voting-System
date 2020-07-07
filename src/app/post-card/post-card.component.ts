@@ -39,6 +39,7 @@ export class PostCardComponent implements OnInit {
   }
 
   deletePost(i:number){
+
     this.posts$=this.dataService.deletePost(i)
 }
   
