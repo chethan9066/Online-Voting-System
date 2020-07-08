@@ -61,8 +61,8 @@ export class PostCardComponent implements OnInit {
 
   setSort(value:string) {
     this.sortSet = value;
-    console.log("Sorting by :" + value);
-    this.posts$ = this.dataService.setSort(value);
+    //console.log("Sorting by :" + value);
+    this.setPostsData(this.dataService.setSort(value))
   }
 
   setPostsData(posts: Observable<PostData[]>) {

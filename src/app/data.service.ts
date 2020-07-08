@@ -73,7 +73,7 @@ downVote(i:number):Observable<PostData[]>{
 
   setSort(value: string){
     this.sortBy = value;
-    console.log("sort value: "+value)
+    //console.log("sort value: "+value)
      return this.getPosts();
     
     }
@@ -81,7 +81,7 @@ downVote(i:number):Observable<PostData[]>{
     sort(posts: Observable<PostData[]> ): Observable<PostData[]> {
       return posts.pipe( tap ( posts => {
           posts.sort( 
-            (x, y) => { return x[this.sortBy] > y[this.sortBy] ? 1: -1}
+            (x: PostData, y: PostData) => { return x[this.sortBy].toLowerCase() > y[this.sortBy].toLowerCase() ? 1: -1}
           )
        })
       );
