@@ -6,9 +6,9 @@ export class PostData {
     public downVoted : boolean;
 
     constructor( 
-        public postString: string, 
-        public username: string,
-        public title : string,
+        private postString: string, 
+        private username: string,
+        private title : string,
         private category: string, 
         private userImage: string,
         private UpdatedOn: string,

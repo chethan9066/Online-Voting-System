@@ -8,6 +8,7 @@ describe('PostFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports:[],
       declarations: [ PostFormComponent ]
     })
     .compileComponents();

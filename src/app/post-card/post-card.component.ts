@@ -7,6 +7,7 @@ import {DataService} from '../data.service';
 import { AuthService } from '../auth.service'
 import { tap } from 'rxjs/operators';
 import { OrderPipe } from 'ngx-order-pipe';
+import { Router } from '@angular/router';
 
 
 
@@ -19,7 +20,8 @@ export class PostCardComponent implements OnInit {
   constructor(private changeDetectorRef: ChangeDetectorRef,
      private dataService: DataService,
      private getusername:AuthService,
-     private orderPipe: OrderPipe) { }
+     private orderPipe: OrderPipe,
+     private router:Router) { }
  
   searchPost;
   page:number=1;
@@ -29,22 +31,19 @@ export class PostCardComponent implements OnInit {
   upvoteActive:boolean=false;
   downvoteActive:boolean=false;
 
-  posts: PostData[] = [];
+
   posts$: Observable<PostData[]>;
 
-  name:string;
-  title:string;
-  category:string;
-  postString:string;
-  today= Date.now();
-  isUpVote:boolean;
-  isDownVote:boolean;
   loading=[];
   sortSet = 'username';
 
 
   ngOnInit(): void {
-    this.posts$=this.dataService.getPosts();
+    if(this.username==null){
+      this.router.navigate(["login"]);
+    }else{
+      this.posts$=this.dataService.getPosts();
+    }
 
   }
 

@@ -1,4 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { OrderPipe } from 'ngx-order-pipe';
+import { RouterTestingModule } from '@angular/router/testing';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { OrderModule } from 'ngx-order-pipe';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 import { PostCardComponent } from './post-card.component';
 
@@ -8,7 +14,14 @@ describe('PostCardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PostCardComponent ]
+      imports:[ RouterTestingModule,
+                NgxPaginationModule,
+                OrderModule,
+                Ng2SearchPipeModule],
+
+      declarations: [ PostCardComponent ,OrderPipe],
+
+      providers:[OrderPipe]
     })
     .compileComponents();
   }));
@@ -19,7 +32,7 @@ describe('PostCardComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create Post Card', () => {
     expect(component).toBeTruthy();
   });
 });

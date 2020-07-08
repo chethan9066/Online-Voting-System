@@ -25,14 +25,12 @@ export class PostFormComponent implements OnInit {
   isUpVote:boolean;
   isDownVote:boolean;
   posts: PostData[] = [];
-  posts$: Observable<PostData[]>;
   ngOnInit(): void {
-    this.posts$=this.dataService.getPosts();
   }
 
   
   addPost(){
-    this.posts$ = this.dataService.addPost( new PostData( this.postString,this.name,this.title,this.category ,'https://bootdey.com/img/Content/avatar/avatar7.png',Date().toString(),this.isUpVote,this.isDownVote))
+    this.dataService.addPost( new PostData( this.postString,this.name,this.title,this.category ,'https://bootdey.com/img/Content/avatar/avatar7.png',Date().toString(),this.isUpVote,this.isDownVote))
     this.name=""
     this.title=""
     this.category=""

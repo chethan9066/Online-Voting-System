@@ -31,8 +31,6 @@ export class LoginComponent implements OnInit {
         setTimeout(() => {
           this.loading=false
         }, 3000);
-        let p=document.createElement("p")
-        p.nodeValue="User Name or Password Incorrect";
         
     }
   }
