@@ -58,9 +58,9 @@ export class PostCardComponent implements OnInit {
   upVote(i:number) {
     if(!this.dataService.checkIsUserVoted)
     {
-      this.dataService.upVote(i)
+      this.posts$=this.dataService.upVote(i)
     }else {
-      this.dataService.upVote(i)
+      this.posts$=this.dataService.upVote(i)
 
     }
 

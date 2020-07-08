@@ -25,16 +25,19 @@ export class PostFormComponent implements OnInit {
   isUpVote:boolean;
   isDownVote:boolean;
   posts: PostData[] = [];
+  verify:boolean;  
+  
   ngOnInit(): void {
   }
 
   
-  addPost(){
+  addPost():boolean{
     this.dataService.addPost( new PostData( this.postString,this.name,this.title,this.category ,'https://bootdey.com/img/Content/avatar/avatar7.png',Date().toString(),this.isUpVote,this.isDownVote))
     this.name=""
     this.title=""
     this.category=""
     this.postString=""
+    return true
     
   }
 }

@@ -77,8 +77,10 @@ downVote(i:number):Observable<PostData[]>{
 
   getPosts():Observable<PostData[]>{
    let posts$ = this.createObservable(this.posts);
-   if ( this.sortBy == null )
+   if ( this.sortBy == null ){
+      //console.log(posts$)
       return posts$;
+   }
     else 
       return this.sort(posts$)
   }
