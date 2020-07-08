@@ -7,9 +7,12 @@ import {FormsModule} from '@angular/forms';
 import { LoginComponent } from './login.component';
 import{ AuthService } from '../auth.service';
 import {  Router } from '@angular/router';
+import { Observable, timer } from 'rxjs';
+import { mapTo } from 'rxjs/operators';
 
 
 describe('LoginComponent', () => {
+  let auth: jasmine.SpyObj<AuthService>;
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let service:AuthService;
@@ -19,14 +22,15 @@ describe('LoginComponent', () => {
 
 
  beforeEach(async(() => {
-
+  auth = jasmine.createSpyObj('AuthService', ['login']);
     TestBed.configureTestingModule({
       imports: [RouterTestingModule.withRoutes([]),
         FormsModule],
 
       declarations: [ LoginComponent ],
       schemas: [ NO_ERRORS_SCHEMA ,
-        CUSTOM_ELEMENTS_SCHEMA]
+        CUSTOM_ELEMENTS_SCHEMA],
+      providers:[ {provide: AuthService, useValue: auth} ]
     })
     .compileComponents();
   }));
@@ -34,12 +38,9 @@ describe('LoginComponent', () => {
   
 
   beforeEach(() => {
-    service = new AuthService();
-    
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    component = new LoginComponent(router,service);
   });
 
   afterEach(() => { 
@@ -52,14 +53,17 @@ describe('LoginComponent', () => {
   });
 
   it('should Check user name and Password return true if valid',()=>{
-    spy = spyOn(service, 'login').and.returnValue(true);
-    //console.log("spy " + spy)
-    expect(component.login()).toBeTruthy();
+    let valid : Observable<boolean>=timer(0).pipe ( mapTo(true) )
+    auth.login.and.returnValue(valid);
+    component.login()
+    expect(auth.login).toHaveBeenCalled();
   });
 
   it('should Check user name and Password return false if not valid',()=>{
-    spy = spyOn(service, 'login').and.returnValue(false);
-    expect(component.login()).toBeFalsy();
+    let valid : Observable<boolean>=timer(0).pipe ( mapTo(false) )
+    auth.login.and.returnValue(valid);
+    component.login()
+    expect(auth.login).toHaveBeenCalled();
   });
 
 });

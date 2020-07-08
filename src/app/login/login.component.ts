@@ -19,24 +19,16 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  login():boolean{
-    let auth:boolean;
-      if(this.authService.login(this.username,this.password)){
-        this.loading=true
-        setTimeout(() => {
+  login(){
+      this.loading=true
+      this.authService.login(this.username,this.password).subscribe( (valid:boolean) => {
+        this.loading=false
+        if(valid) {
+          
           this.router.navigate(["online-voting-system"]);
-        }, 2000);
-        console.log("true from login")
-       auth= true;
-      }else {
-        this.loading=true
-        setTimeout(() => {
-          this.loading=false
-        }, 3000);
-        console.log("false from login")
-        auth=false;
-    }
-    return auth;
+        }
+        
+      } )
   }
 
 }
