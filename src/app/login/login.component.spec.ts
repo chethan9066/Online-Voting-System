@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {FormsModule} from '@angular/forms';
+
 
 import { LoginComponent } from './login.component';
 import{ AuthService } from '../auth.service';
@@ -19,7 +21,8 @@ describe('LoginComponent', () => {
  beforeEach(async(() => {
 
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule.withRoutes([])],
+      imports: [RouterTestingModule.withRoutes([]),
+        FormsModule],
 
       declarations: [ LoginComponent ],
       schemas: [ NO_ERRORS_SCHEMA ,
