@@ -11,6 +11,7 @@ import {DataService} from '../data.service';
 import { PostData } from '../admin/post.model';
 import { Observable, timer } from 'rxjs';
 import { mapTo } from 'rxjs/operators';
+import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
 describe('PostCardComponent', () => {
@@ -32,7 +33,10 @@ describe('PostCardComponent', () => {
       declarations: [ PostCardComponent ,OrderPipe],
 
       providers:[OrderPipe,
-        {provide: DataService, useValue: dataServiceSpy}]
+        {provide: DataService, useValue: dataServiceSpy}],
+      
+        schemas: [ NO_ERRORS_SCHEMA ,
+                   CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));

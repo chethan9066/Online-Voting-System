@@ -26,53 +26,39 @@ addPost(post: PostData):Observable<PostData[]>{
     return timer(2000).pipe(mapTo(posts)); 
   }
 
+  loadVotes () {
+    for(let postIndex in this.posts) 
+      this.checkIsUserVoted(+postIndex);
+  }
+
 deletePost(i:number):Observable<PostData[]>{
   this.posts.splice(i,1)
   return this.getPosts();
 
   }
 
-checkIsUserVoted(i:number):Observable<PostData[]>{
+checkIsUserVoted(i:number) {
   let user=this.authService.getLoggedInUser()
-  let isUpVoted=this.posts[i].upVotesUsers.has(user)
-  let isDownVoted = this.posts[i].downVotesUsers.has(user)
-  if(isUpVoted){
-    this.posts[i].upVoted=true;
-  }else if(isDownVoted){
-    this.posts[i].downVoted=true;
-  }  
-
-  return this.getPosts();
+  this.posts[i].isUpVote=this.posts[i].upVotesUsers.has(user)
+  this.posts[i].isDownVote=this.posts[i].downVotesUsers.has(user)
 }  
 
 upVote(i:number):Observable<PostData[]>{
   let user=this.authService.getLoggedInUser()
-  let isThere=this.posts[i].downVotesUsers.has(user)
-  this.posts[i].isUpVote=true
-  this.posts[i].isDownVote=false
-  if(isThere){
-    this.posts[i].downVotesUsers.delete(user)
-    this.posts[i].upVotesUsers.add(user)
-  }else{
-    this.posts[i].upVotesUsers.add(user)
-  }
+  this.posts[i].downVotesUsers.delete(user)
+  this.posts[i].upVotesUsers.add(user)
+  this.checkIsUserVoted(i)
+  
   return this.getPosts();
 }
 
 downVote(i:number):Observable<PostData[]>{
   let user=this.authService.getLoggedInUser()
-  let isThere=this.posts[i].upVotesUsers.has(user)
-  this.posts[i].isUpVote=false
-  this.posts[i].isDownVote=true
-  if(isThere){
-    this.posts[i].downVotesUsers.add(user)
-    this.posts[i].upVotesUsers.delete(user)
-  }else{
-    this.posts[i].downVotesUsers.add(user)
-  }
+  this.posts[i].upVotesUsers.delete(user)
+  this.posts[i].downVotesUsers.add(user)
+  this.checkIsUserVoted(i);
 
   return this.getPosts();
-
 }
 
   getPosts():Observable<PostData[]>{

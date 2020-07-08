@@ -30,11 +30,9 @@ export class PostCardComponent implements OnInit {
   totalDownVotes$: Observable<PostData[]>;
   upvoteActive:boolean=false;
   downvoteActive:boolean=false;
-
+  loading: boolean =false; 
 
   posts$: Observable<PostData[]>;
-
-  loading=[];
   sortSet = 'username';
 
 
@@ -42,39 +40,23 @@ export class PostCardComponent implements OnInit {
     if(this.username==null){
       this.router.navigate(["login"]);
     }else{
-      this.posts$=this.dataService.getPosts();
+      this.dataService.loadVotes();
+      this.setPostsData( this.dataService.getPosts() );
     }
 
   }
 
   deletePost(i:number){
-    this.loading[i]=true;
-    setTimeout(() => {
-      this.loading[i]=false;
-    }, 5000);
-    this.posts$=this.dataService.deletePost(i)
+    this.setPostsData( this.dataService.deletePost(i) )
 }
   
   upVote(i:number) {
-    if(!this.dataService.checkIsUserVoted)
-    {
-      this.posts$=this.dataService.upVote(i)
-    }else {
-      this.posts$=this.dataService.upVote(i)
-
-    }
-
+      this.setPostsData(this.dataService.upVote(i))
   }
 
   downVote(i:number) {
-    
-    if(!this.dataService.checkIsUserVoted)
-    {
-      this.dataService.downVote(i)
-    }else {
-      this.dataService.downVote(i)
+    this.setPostsData(this.dataService.downVote(i))
 
-    }
   }
 
   setSort(value:string) {
@@ -82,6 +64,12 @@ export class PostCardComponent implements OnInit {
     console.log("Sorting by :" + value);
     this.posts$ = this.dataService.setSort(value);
   }
+
+  setPostsData(posts: Observable<PostData[]>) {
+    this.loading = true;
+    this.posts$ = posts.pipe( tap ( (data) => {  this.loading = false; } ) );
+  }
+
   
   }
 

@@ -2,8 +2,6 @@ export class PostData {
 
     public upVotesUsers:Set<string>;
     public downVotesUsers:Set<string>;
-    public upVoted :boolean;
-    public downVoted : boolean;
 
     constructor( 
         private postString: string, 

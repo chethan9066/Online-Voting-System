@@ -1,6 +1,9 @@
 <!-- Post Cards-->
-<div class="container">
-    <div class="row">
+<div [class.spinner]="loading" id="overlay" *ngIf="loading">
+
+</div>
+<div class="container" >
+    <div class="row" >
     <div class="col-md-8">
       <div class="chat_container">
         <div class="job-box">
@@ -22,7 +25,7 @@
               </div>
             </div>
           </div>
-          <div class="inbox-message">
+          <div class="inbox-message" >
             <ul *ngFor ="let post of posts$|async |filter:searchPost |paginate: { itemsPerPage: 5, currentPage: page } ;let i = index">
               <li>
                   <div class="message-avatar">
@@ -57,7 +60,7 @@
                     </div>
                   
                   </div>
-                  <button class="btn btn-danger btn-sm rounded-0" type="button" id="delete" data-toggle="tooltip" data-placement="top" title="Delete" (click)="deletePost(i)" *ngIf="username=='admin'" [class.spinner]="loading[i]" [disabled]="loading[i]"><i class="fa fa-trash"></i></button>
+                  <button class="btn btn-danger btn-sm rounded-0" type="button" id="delete" data-toggle="tooltip" data-placement="top" title="Delete" (click)="deletePost(i)" *ngIf="username=='admin'" ><i class="fa fa-trash"></i></button>
               </li>
               <hr style="height:2px;border-width:0;color:gray;background-color:gray">
             </ul>
