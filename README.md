@@ -2,6 +2,9 @@ To Build and Run <br>
 ` npm install` <br>
 ` ng serve` <br>
 
+To Run Unit Test <br>
+`ng test` <br>
+
 To check adming feature use below login credentials: <br>
 `user name: admin password: admin` <br>
 
