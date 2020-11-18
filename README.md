@@ -25,3 +25,6 @@ To check features of non admin user login use one of below credentails: <br>
 
 <a href="http://onlinevotingsystem.s3-website-us-east-1.amazonaws.com/">Click here </a> For Live Demo<br>
 
+<b>Flow Chart</b> <br>
+
+<img src="https://github.com/chethan1996/Online-Voting-System/blob/master/Online%20Voting%20System.jpeg">
